@@ -1,0 +1,53 @@
+<div layout="column" class="md-date-picker-calendar-month">
+
+    <div layout="row" layout-align="space-between center" class="md-date-picker-calendar-month-controls">
+
+        <md-button ng-click="ctrl.prev()" aria-label="prev">
+            <md-icon md-svg-src="prev-month"></md-icon>
+        </md-button>
+
+        <div flex></div>
+
+        <div layout="row" layout-align="space-between center" layout-padding>
+
+            <md-select class="md-date-picker-calendar-month-controls-month" ng-model="ctrl.month" ng-change="ctrl.refresh()">
+                <md-option ng-repeat="month in ctrl.months" ng-selected="{{$index === ctrl.month}}" ng-value="$index">{{month | uppercase}}</md-option>
+            </md-select>
+
+
+            <md-select class="md-date-picker-calendar-month-controls-year-select" ng-model="ctrl.year" ng-change="ctrl.refresh()">
+                <md-option ng-repeat="year in ctrl.years" ng-selected="{{year === ctrl.year}}" ng-value="year">{{year}}</md-option>
+            </md-select>
+
+            <!--<md-input-container class="md-date-picker-calendar-month-controls-year">-->
+                <!--<input required type="number" step="any" name="year" ng-model="ctrl.year" ng-change="ctrl.refresh()">-->
+            <!--</md-input-container>-->
+        </div>
+
+        <div flex></div>
+
+        <md-button ng-click="ctrl.next()" aria-label="next">
+            <md-icon md-svg-src="next-month"></md-icon>
+        </md-button>
+
+    </div>
+
+    <div layout="column" class="md-date-picker-calendar-month-wdays">
+
+        <div layout="row" layout-margin>
+            <span flex ng-repeat="wday in ctrl.weekdays" class="md-date-picker-calendar-month-wday">{{wday}}</span>
+        </div>
+
+        <div class="md-date-picker-calendar-month-days">
+            <div layout="row" layout-margin ng-repeat="row in ctrl.rows">
+
+                    <span flex ng-click="ctrl.select(day.date)"
+                          class="md-date-picker-calendar-month-day" ng-class="day.classes"
+                          ng-repeat="day in row">{{day.label}}</span>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
