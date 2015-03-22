@@ -26,16 +26,9 @@
 .md-date-picker-calendar-month-day-today {
   background-color: silver; }
 
-.md-date-picker-calendar-month-controls-month, .md-date-picker-calendar-month-controls-year-select {
+.md-date-picker-calendar-month-controls-month, .md-date-picker-calendar-month-controls-year {
   margin: 0 0.5em 0 1.5em; }
-  .md-date-picker-calendar-month-controls-month .md-select-label, .md-date-picker-calendar-month-controls-year-select .md-select-label {
+  .md-date-picker-calendar-month-controls-month .md-select-label, .md-date-picker-calendar-month-controls-year .md-select-label {
     border: none !important; }
-  .md-date-picker-calendar-month-controls-month .md-select-icon, .md-date-picker-calendar-month-controls-year-select .md-select-icon {
+  .md-date-picker-calendar-month-controls-month .md-select-icon, .md-date-picker-calendar-month-controls-year .md-select-icon {
     display: none; }
-
-.md-date-picker-calendar-month-controls-year {
-  padding-bottom: 2px;
-  max-width: 70px;
-  min-width: 70px; }
-  .md-date-picker-calendar-month-controls-year input {
-    border-bottom: none !important; }
