@@ -28,24 +28,29 @@
   color: silver;
 }
 
-.md-date-picker-calendar-month-day-selected {
+.md-date-picker-calendar-month-day-today {
+  background-color: silver;
+}
 
+.md-date-picker-calendar-month-day-selected {
   font-weight: bold;
   color: #e6e6e6;
   background-color: #00baa9;
 }
 
-.md-date-picker-calendar-month-day-today {
-  background-color: silver;
-}
-
 .md-date-picker-calendar-month-controls-month,
 .md-date-picker-calendar-month-controls-year {
-  margin: 0 0.5em 0 1.5em;
+  margin: 0 0.5em;
   .md-select-label {
     border: none !important;
   }
   .md-select-icon {
     display: none;
+  }
+}
+
+.md-date-picker-calendar-month-controls-year {
+  .md-select-label {
+    min-width: 0;
   }
 }
