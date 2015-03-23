@@ -43,6 +43,16 @@ class DateUtils {
 		return arrays;
 	}
 
+	static yearsRange(d1, d2) {
+		let minYear = d1 ? d1.getFullYear() : 1970;
+		let maxYear = d2 ? d2.getFullYear() : new Date().getFullYear();
+		var result  = [];
+		for (let y = minYear; y <= maxYear; ++y) {
+			result.push(y);
+		}
+		return result;
+	}
+
 }
 
 export default DateUtils;

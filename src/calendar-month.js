@@ -33,20 +33,13 @@ class MdCalendarMonthDirective {
 
 		let ctrl = this;
 
-		ctrl.date  = ctrl.date  || new Date();
-		ctrl.month = ctrl.month || ctrl.date.getMonth();
-		ctrl.months = moment.months();
-
-		ctrl.minDate = ctrl.min ? moment(ctrl.min, ['YYYY']).toDate() : null;
-		ctrl.maxDate = ctrl.max ? moment(ctrl.max, ['YYYY']).toDate() : null;
-
-		ctrl.year    = ctrl.year  || ctrl.date.getFullYear();
-		ctrl.minYear = ctrl.minDate ? ctrl.minDate.getFullYear() : 1970;
-		ctrl.maxYear = ctrl.maxDate ? ctrl.maxDate.getFullYear() : new Date().getFullYear();
-		ctrl.years = [];
-		for (let y = ctrl.minYear; y <= ctrl.maxYear; ++y) {
-			ctrl.years.push(y);
-		}
+		ctrl.date    = ctrl.date  || new Date();
+		ctrl.month   = ctrl.month || ctrl.date.getMonth();
+		ctrl.months  = moment.months();
+		ctrl.minDate = parseDate(ctrl.min);
+		ctrl.maxDate = parseDate(ctrl.max);
+		ctrl.year    = ctrl.year || ctrl.date.getFullYear();
+		ctrl.years   = DateUtils.yearsRange(ctrl.minDate, ctrl.maxDate);
 
 		ctrl.startingDay = ctrl.startingDay || 1;
 		ctrl.weekdays = moment.weekdaysMin();
@@ -60,6 +53,10 @@ class MdCalendarMonthDirective {
 		ctrl.refresh = refresh;
 
 		ctrl.refresh();
+
+        function parseDate(d) {
+            return d ? moment(d, ['YYYY']).toDate() : null;
+        }
 
 		function prev() {
 			const date = new Date(ctrl.year, ctrl.month, 15);
