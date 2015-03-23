@@ -2,11 +2,11 @@ const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 class DateUtils {
 
-	getDaysInMonth( year, month ) {
+	static getDaysInMonth( year, month ) {
 		return ((month === 1) && (year % 4 === 0) && ((year % 100 !== 0) || (year % 400 === 0))) ? 29 : DAYS_IN_MONTH[month];
 	}
 
-	getDates(startDate, n) {
+	static getDates(startDate, n) {
 		let dates   = new Array(n);
 		let	current = new Date(startDate);
 		let	i = 0;
@@ -18,20 +18,24 @@ class DateUtils {
 		return dates;
 	}
 
-	compare(date1, date2) {
-		return (new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) - new Date(date2.getFullYear(), date2.getMonth(), date2.getDate()) );
+	static asDate(d) {
+		return new Date(d.getFullYear(), d.getMonth(), d.getDate());
 	}
 
-	equal(date1, date2) {
-		if (date1 && date2) {
-			return (new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) - new Date(date2.getFullYear(), date2.getMonth(), date2.getDate()) === 0 );
+	static compare(d1, d2) {
+		return (DateUtils.asDate(d1) - DateUtils.asDate(d2));
+	}
+
+	static equal(d1, d2) {
+		if (d1 && d2) {
+			return DateUtils.compare(d1, d2) === 0;
 		} else {
-			return date1 === date2;
+			return d1 === d2;
 		}
 	}
 
 	// Split array into smaller arrays
-	split(arr, size) {
+	static split(arr, size) {
 		let arrays = [];
 		while (arr.length > 0) {
 			arrays.push(arr.splice(0, size));
@@ -41,6 +45,4 @@ class DateUtils {
 
 }
 
-const dateUtils = new DateUtils();
-
-export default dateUtils;
+export default DateUtils;

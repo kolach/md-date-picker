@@ -1,4 +1,4 @@
-import dateUtils from './date-utils';
+import DateUtils from './date-utils';
 
 // Calendar month class
 class MdCalendarMonthDirective {
@@ -90,7 +90,7 @@ class MdCalendarMonthDirective {
 			}
 
 			// 42 is the number of days on a six-month calendar
-			let days = dateUtils.getDates(firstDate, 42);
+			let days = DateUtils.getDates(firstDate, 42);
 			let today = new Date();
 			for (let i = 0; i < 42; i++) {
 				let day = days[i];
@@ -98,14 +98,14 @@ class MdCalendarMonthDirective {
 					date: day,
 					label: moment(day).format('DD'),
 					classes: {
-						'md-date-picker-calendar-month-day-selected': dateUtils.equal(ctrl.date, day),
-						'md-date-picker-calendar-month-day-today': dateUtils.equal(today, day),
+						'md-date-picker-calendar-month-day-selected': DateUtils.equal(ctrl.date, day),
+						'md-date-picker-calendar-month-day-today': DateUtils.equal(today, day),
 						'md-date-picker-calendar-month-day-muted': day.getMonth() !== ctrl.month
 					}
 				};
 			}
 
-			ctrl.rows = dateUtils.split(days, 7);
+			ctrl.rows = DateUtils.split(days, 7);
 		}
 
 		function select(date) {
